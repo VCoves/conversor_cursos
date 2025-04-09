@@ -49,12 +49,16 @@ jobs:
           name: dist
           path: dist/
 
-      - name: Upload binaries to release
+      - name: Zip the dist directory
+        run: |
+          Compress-Archive -Path dist\* -DestinationPath conversor.zip
+
+      - name: Upload Release Asset
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dist/
-          asset_name: conversor
-          tag: ${{ github.ref }}
+          file: conversor.zip
+          asset_name: conversor.zip
+          tag: ${{ github.ref_name }}
           overwrite: true
-          body: "This is my release text"
+          body: "Version 1"
