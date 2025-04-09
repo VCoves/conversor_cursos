@@ -51,7 +51,6 @@ def process(fp:str="cursos.xls")->str:
         file_name = os.path.abspath(os.path.join(output_dir, f"{company}_{course}.xlsx"))
         # Save the group to an Excel file
         group.to_excel(file_name, index=False)
-        last_path = file_name
         # group.to_csv(os.path.abspath(os.path.join(output_dir, f"{company}_{course}.csv")), index=False)
 
         # print(f"Saved: {file_name}")
