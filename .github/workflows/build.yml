@@ -35,6 +35,7 @@ jobs:
           
       - name: Build with PyInstaller
         run: |
+          .venv\Scripts\activate
           set PYTHONOPTIMIZE=2
           pyinstaller --name=conversor --onedir test.py --noconsole --noconfirm
 
