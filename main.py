@@ -21,7 +21,6 @@ def process(fp:str="cursos.xls")->str:
 
 
     # Load the Excel file
-    # file_path = 'cursos.xls'  # Replace with your file path
     df = pd.read_excel(file_path)
 
     # Group by company and course
