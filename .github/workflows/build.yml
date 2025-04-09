@@ -49,9 +49,9 @@ jobs:
           name: dist
           path: dist/
 
-      - name: Zip the dist directory
+      - name: Zip the dist directory (fastest decompression)
         run: |
-          Compress-Archive -Path dist\* -DestinationPath conversor.zip
+          Compress-Archive -Path dist\* -DestinationPath conversor.zip -CompressionLevel Fastest
 
       - name: Upload Release Asset
         uses: svenstaro/upload-release-action@v2
