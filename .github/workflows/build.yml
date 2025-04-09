@@ -24,13 +24,13 @@ jobs:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
       
-      - name: Install Dependencies using uv
+      - name: Install Dependencies using uv (Latest from pyproject.toml)
         run: |
           python -m venv .venv
           .venv\Scripts\activate
           pip install --upgrade pip  # It's good practice to upgrade pip first
           pip install uv             # Ensure uv is installed
-          uv sync   
+          uv pip install --no-cache-dir --upgrade --no-lock -r pyproject.toml
 
           
       - name: Build with PyInstaller
