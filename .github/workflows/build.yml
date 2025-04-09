@@ -28,9 +28,9 @@ jobs:
         run: |
           python -m venv .venv
           .venv\Scripts\activate
-          pip install --upgrade pip  # It's good practice to upgrade pip first
+          python.exe -m pip install --upgrade pip  # It's good practice to upgrade pip first
           pip install uv             # Ensure uv is installed
-          uv pip install --no-cache-dir --upgrade --no-lock -r pyproject.toml
+          uv pip install --upgrade -r pyproject.toml
 
           
       - name: Build with PyInstaller
