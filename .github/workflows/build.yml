@@ -1,0 +1,38 @@
+name: Build PyInstaller Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r uv.lock
+          
+      - name: Build with PyInstaller
+        run: |
+          set PYTHONOPTIMIZE=2
+          pyinstaller --name=conversor --onedir test.py --noconsole --noconfirm
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
